@@ -26,7 +26,9 @@ export class Vector2D extends Array {
   get dir() {
     return Math.atan2(this.y, this.x);
   }
-
+  get mod() {
+    return Math.hypot(this.x, this.y);
+  }
   copy() {
     return new Vector2D(this.x, this.y);
   }
@@ -58,7 +60,7 @@ export class Vector2D extends Array {
   }
 
   normalize() {
-    return this.scale(1 / this.length);
+    return this.scale(1 / this.mod);
   }
 
   rotate(rad) {
